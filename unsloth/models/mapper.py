@@ -18,7 +18,10 @@ __all__ = [
 ]
 
 __INT_TO_FLOAT_MAPPER = \
-{
+{   "Tony068/pheonix" : (
+        "Tony068/pheonix",
+        "Tony068/pheonix",
+    ),
     "unsloth/mistral-7b-bnb-4bit" : (
         "unsloth/mistral-7b",
         "mistralai/Mistral-7B-v0.1",
