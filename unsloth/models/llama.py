@@ -2242,7 +2242,7 @@ class FastLlamaModel:
         pass
 
         accepted_modules = frozenset(("q_proj", "k_proj", "v_proj", "o_proj",
-                                      "gate_proj", "up_proj", "down_proj",),)
+                                      "gate_proj", "up_proj", "down_proj","input_layernorm", "post_attention_layernorm",),)
         model.config.update({"unsloth_version" : __version__})
 
         if type(modules_to_save) is tuple:
