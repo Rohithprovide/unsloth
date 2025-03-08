@@ -2251,6 +2251,8 @@ class FastLlamaModel:
 
         train_lm_head = False
         train_embed_tokens = False
+        train_input_layernorm = False
+        train_post_attention_layernorm = False
         final_modules = []
         for module in target_modules:
             if module == "lm_head":
@@ -2270,6 +2272,22 @@ class FastLlamaModel:
                 train_embed_tokens = True
                 if modules_to_save is None: modules_to_save = ["embed_tokens"]
                 else: modules_to_save.append("embed_tokens")
+            elif module == "input_layernorm":
+                # logger.warning_once(
+                #     "Unsloth: `embed_tokens` should be placed in `modules_to_save` and not `target_modules`. "\
+                #     "Luckily, we shall do it for you!"
+                # )
+                train_embed_tokens = True
+                if modules_to_save is None: modules_to_save = ["input_layernorm"]
+                else: modules_to_save.append("input_layernorm")
+            elif module == "post_attention_layernorm":
+                # logger.warning_once(
+                #     "Unsloth: `embed_tokens` should be placed in `modules_to_save` and not `target_modules`. "\
+                #     "Luckily, we shall do it for you!"
+                # )
+                train_embed_tokens = True
+                if modules_to_save is None: modules_to_save = ["post_attention_layernorm"]
+                else: modules_to_save.append("post_attention_layernorm")
 
             else:
                 try:
